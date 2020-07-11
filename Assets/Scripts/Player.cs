@@ -77,6 +77,9 @@ public class Player : MonoBehaviour
             case "dash":
                 dashCount ++;
                 break;
+            case "Finish":
+                Application.LoadLevel(Application.loadedLevel);
+                break;
         }
 
         Destroy(powerUp);
