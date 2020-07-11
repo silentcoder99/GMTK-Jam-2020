@@ -64,13 +64,13 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         GameObject powerUp = other.gameObject;
 
-        string pickupName = other.gameObject.name;
+        string pickupName = other.gameObject.tag.ToString();
 
         switch(pickupName){
-            case "JumpPickup":
+            case "jump":
                 jumpCount ++;
                 break;
-            case "DashPickup":
+            case "dash":
                 dashCount ++;
                 break;
         }
