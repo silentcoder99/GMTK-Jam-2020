@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class Player : MonoBehaviour
     private Text jumpCounter;
     private GameObject dashCounterObj;
     private Text dashCounter;
+    private GameObject attackCounterObj;
+    private Text attackCounter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,9 @@ public class Player : MonoBehaviour
 
         dashCounterObj = GameObject.Find("dashCounter");
         dashCounter = dashCounterObj.GetComponent<Text>();
+
+        attackCounterObj = GameObject.Find("attackCounter");
+        attackCounter = dashCounterObj.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -76,6 +83,12 @@ public class Player : MonoBehaviour
                 break;
             case "dash":
                 dashCount ++;
+                break;
+            case "attack":
+                attackCount ++;
+                break;
+            case "enemy":
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
             case "Finish":
                 Application.LoadLevel(Application.loadedLevel);
