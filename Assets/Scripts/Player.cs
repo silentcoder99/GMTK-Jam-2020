@@ -8,11 +8,11 @@ public class Player : MonoBehaviour
 {
     public float dashForce = 500f;
     public float jumpForce = 500f;
-    public float speed = 10f;
+    public float speed = 25f;
     public float airSpeed = 10f;
 
-    public float movingFriction = 0.8f;
-    public float stoppingFriction = 1000f;
+    public float movingFriction = 0f;
+    public float stoppingFriction = 25f;
 
     public int jumpCount = 1;
     public int dashCount = 0;
