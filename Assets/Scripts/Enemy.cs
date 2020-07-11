@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         body.transform.position += direction * speed;
         if (hp <= 0){
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
