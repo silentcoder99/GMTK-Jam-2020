@@ -127,7 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashForce: 1
   jumpForce: 1
-  speed: 10
+  speed: 1000000
+  movingFriction: 0
+  stoppingFriction: 0.1
   jumpCount: 1
   dashCount: 0
   attackCount: 0

@@ -1713,12 +1713,22 @@ PrefabInstance:
     - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
       propertyPath: speed
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
       propertyPath: dashCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: movingFriction
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: stoppingFriction
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 833869273171554277, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}

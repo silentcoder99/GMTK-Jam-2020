@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     public float dashForce = 500f;
     public float jumpForce = 500f;
     public float speed = 5f;
+    public float airSpeed = 10f;
+
+    public float movingFriction = 0.8f;
+    public float stoppingFriction = 1000f;
 
     public int jumpCount = 1;
     public int dashCount = 0;
@@ -24,11 +28,16 @@ public class Player : MonoBehaviour
 
     private Rigidbody projectile;
 
+    private Vector3 movement;
+    private bool onFloor;
+
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        setFriction(stoppingFriction);
+        movement = Vector3.zero;
 
         jumpCounterObj = GameObject.Find("jumpCounter");
         jumpCounter = jumpCounterObj.GetComponent<Text>();
@@ -43,10 +52,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        Vector3 movement = Vector3.zero;
         movement.x = Input.GetAxis("Horizontal");
-
-        body.AddForce(movement * speed);
 
         jump();
 
@@ -62,6 +68,29 @@ public class Player : MonoBehaviour
         jumpCounter.text = jumpCount.ToString();
         dashCounter.text = dashCount.ToString();
 
+    }
+
+    void FixedUpdate() {
+        //Set friction based on input
+        if(movement.x != 0 && Mathf.Sign(movement.x) == Mathf.Sign(body.velocity.x)) {
+            setFriction(movingFriction);
+        }
+        else {
+            setFriction(stoppingFriction);
+        }
+
+        if(onFloor) {
+            body.AddForce(movement * speed);
+        }
+        else {
+            body.AddForce(movement * airSpeed);
+        }
+    }
+
+    void setFriction(float friction) {
+        Collider collider = GetComponent<Collider>();
+        collider.material.dynamicFriction = friction;
+        collider.material.staticFriction = friction;
     }
 
     void jump(){
@@ -98,6 +127,22 @@ public class Player : MonoBehaviour
         }
 
         Destroy(powerUp);
+    }
+
+    void OnCollisionEnter(Collision other) {
+        if(other.gameObject.tag == "floor") {
+            onFloor = true;
+
+            Debug.Log("Hit floor");
+        } 
+    }
+
+    void OnCollisionExit(Collision other) {
+        if(other.gameObject.tag == "floor") {
+            onFloor = false;
+
+            Debug.Log("In air");
+        }
     }
 
     private void spawnProjectile(){
