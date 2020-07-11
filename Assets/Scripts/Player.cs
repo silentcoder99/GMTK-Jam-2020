@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float dashForce = 500f;
+    public float dashForce = 1000f;
     public float jumpForce = 500f;
-    public float speed = 25f;
+    public float speed = 40f;
     public float airSpeed = 10f;
+    public float dragFactor = 0.1f;
 
     public float movingFriction = 0f;
-    public float stoppingFriction = 25f;
+    public float stoppingFriction = 2f;
 
     public int jumpCount = 1;
     public int dashCount = 0;
@@ -86,6 +87,14 @@ public class Player : MonoBehaviour
         else {
             setFriction(stoppingFriction);
         }
+
+        //Apply horizontal drag
+        Vector3 drag = Vector3.zero;
+        drag.x = Mathf.Pow(body.velocity.x, 2);
+        if(body.velocity.x > 0) {
+            drag.x *= -1;
+        }
+        body.AddForce(drag * dragFactor);
 
         if(onFloor) {
             body.AddForce(movement * speed);
