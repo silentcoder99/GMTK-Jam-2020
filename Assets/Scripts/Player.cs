@@ -5,9 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public float dashForce = 1.0f;
-    public float jumpForce = 20.0f;
-    public float speed = 1.0f;
+    public float dashForce = 1f;
+    public float jumpForce = 500f;
+    public float speed = 5f;
+
+    public int jumpCount = 1;
+    public int dashCount = 0;
+    public int attackCount = 0;
 
     private Rigidbody body;
 
