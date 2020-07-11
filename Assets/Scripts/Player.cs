@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other){
+    void OnCollisionEnter(Collision other){
         GameObject objectEncountered = other.gameObject;
 
         string objectName = other.gameObject.tag.ToString();
@@ -142,10 +142,8 @@ public class Player : MonoBehaviour
                 kill();
                 break;
         }
-    }
 
-    void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "floor") {
+        if(objectName == "floor") {
             onFloor = true;
 
             Debug.Log("Hit floor");
