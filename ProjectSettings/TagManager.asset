@@ -7,6 +7,8 @@ TagManager:
   - jump
   - dash
   - attack
+  - enemy
+  - goal
   layers:
   - Default
   - TransparentFX
