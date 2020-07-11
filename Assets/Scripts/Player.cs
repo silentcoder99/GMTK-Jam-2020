@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
         jump();
 
-        if(Input.GetButtonDown("Dash") && (dashCount > 0)) {
+        if (Input.GetButtonDown("Dash") && (dashCount > 0)){
             body.AddForce(movement * dashForce);
         }
     }
