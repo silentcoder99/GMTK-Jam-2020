@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public float speed = 10.0f;
+
     private Vector3 direction;
     private Rigidbody body;
 
-    public float speed = 10.0f;
+    private bool turning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +21,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        body.AddForce(direction * speed);
+        body.transform.position += direction * speed;
     }
 
     void OnCollisionEnter(Collision collision) {
-        direction = -direction;
-        Debug.Log("AHHHH");
+        if(collision.gameObject.tag != "floor") {
+            direction = -direction;
+        }
     }
 }
