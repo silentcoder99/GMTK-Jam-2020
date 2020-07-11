@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private Text jumpCounter;
     private GameObject dashCounterObj;
     private Text dashCounter;
+    private GameObject attackCounterObj;
+    private Text attackCounter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,9 @@ public class Player : MonoBehaviour
 
         dashCounterObj = GameObject.Find("dashCounter");
         dashCounter = dashCounterObj.GetComponent<Text>();
+
+        attackCounterObj = GameObject.Find("attackCounter");
+        attackCounter = dashCounterObj.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -77,6 +83,12 @@ public class Player : MonoBehaviour
             case "dash":
                 dashCount ++;
                 break;
+            case "attack":
+                attackCount ++;
+                break;
+            case "enemy":
+                
+                break;
         }
 
         Destroy(powerUp);
@@ -84,5 +96,10 @@ public class Player : MonoBehaviour
 
     private void spawnProjectile(){
 
+    }
+
+    private void die(){
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
