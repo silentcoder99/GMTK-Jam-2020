@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
         jump();
 
-        if(Input.GetButtonDown("Dash")) {
+        if(Input.GetButtonDown("Dash") && (dashCount > 0)) {
             body.AddForce(movement * dashForce);
         }
     }
@@ -48,6 +48,18 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         GameObject powerUp = other.gameObject;
+
+        string pickupName = other.gameObject.name;
+
+        switch(pickupName){
+            case "JumpPickup":
+                jumpCount ++;
+                break;
+            case "DashPickup":
+                dashCount ++;
+                break;
+        }
+
         Destroy(powerUp);
     }
 }
