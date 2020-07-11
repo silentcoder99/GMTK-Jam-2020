@@ -154,12 +154,19 @@ public class Player : MonoBehaviour
                 kill();
                 break;
         }
+
+        if(objectName == "floor") {
+            onFloor = true;
+
+            Debug.Log("Hit floor");
+        } 
     }
 
     void OnCollisionExit(Collision other) {
         if(other.gameObject.tag == "floor") {
             onFloor = false;
 
+            Debug.Log("In air");
         }
     }
 
@@ -179,5 +186,9 @@ public class Player : MonoBehaviour
 
     private void kill(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void nextLevel(){
+        
     }
 }
