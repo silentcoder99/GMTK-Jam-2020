@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
                 Destroy(objectEncountered);
                 break;
             case "Finish":
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                nextLevel();
                 break;
         }
     }
@@ -189,6 +189,7 @@ public class Player : MonoBehaviour
     }
 
     private void nextLevel(){
-        
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextScene);
     }
 }
