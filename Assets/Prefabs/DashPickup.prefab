@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8970800861414538356}
   - component: {fileID: 8970800861414538357}
-  - component: {fileID: 2007556444}
+  - component: {fileID: -4700034794319200744}
   m_Layer: 0
-  m_Name: JumpPickup
+  m_Name: DashPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b0ec343fefc262d4080a788b3047b100, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6fd0aa3494b81d341a1da409422b0cb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &2007556444
+--- !u!65 &-4700034794319200744
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
