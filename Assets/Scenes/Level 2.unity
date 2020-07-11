@@ -252,6 +252,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5572098147969526129, guid: 8c8d71606a6796b469966d558fb7a197,
+        type: 3}
+    - target: {fileID: 833869273171554277, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833869273171554277, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 833869273171554281, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
       propertyPath: m_LocalPosition.x
