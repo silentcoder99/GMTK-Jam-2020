@@ -39,9 +39,15 @@ public class Player : MonoBehaviour
     void jump(){
         Vector3 jumpVector = Vector3.zero;
 
-        if (Input.GetButtonDown("Jump")){
+        if (Input.GetButtonDown("Jump") && (jumpCount > 0)){
             jumpVector.y = 1;
             body.AddForce(transform.up * jumpForce);
+            jumpCount --;
         }
+    }
+
+    private void OnTriggerEnter(Collider other){
+        GameObject powerUp = other.gameObject;
+        Destroy(powerUp);
     }
 }
