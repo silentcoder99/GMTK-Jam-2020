@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float dashForce = 1f;
+    public float dashForce = 500f;
     public float jumpForce = 500f;
     public float speed = 5f;
 
