@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     public float dashForce = 500f;
     public float jumpForce = 500f;
-    public float speed = 5f;
+    public float speed = 10f;
     public float airSpeed = 10f;
 
     public float movingFriction = 0.8f;
@@ -159,9 +159,11 @@ public class Player : MonoBehaviour
     }
 
     private void spawnProjectile(){
-            Rigidbody clone;
+            Rigidbody clone, negclone;
             clone = Instantiate(projectile, transform.position, transform.rotation);
-            clone.velocity = transform.TransformDirection(Vector3.forward * 10);
+            negclone = Instantiate(projectile, (transform.position - new Vector3(1, 0, 0)), transform.rotation);
+            clone.velocity = transform.TransformDirection(Vector3.back * 10);
+            negclone.velocity = transform.TransformDirection(Vector3.forward * -10);
     }
 
     private void kill(){
