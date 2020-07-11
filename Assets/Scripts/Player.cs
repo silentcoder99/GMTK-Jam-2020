@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private GameObject attackCounterObj;
     private Text attackCounter;
 
-    private Rigidbody projectile;
+    private GameObject projectile;
 
 
     // Start is called before the first frame update
@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
 
         jumpCounter.text = jumpCount.ToString();
         dashCounter.text = dashCount.ToString();
+        attackCounter.text = attackCount.ToString();
 
     }
 
@@ -93,7 +94,7 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
             case "Finish":
-                Application.LoadLevel(Application.loadedLevel);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }
 
@@ -101,8 +102,8 @@ public class Player : MonoBehaviour
     }
 
     private void spawnProjectile(){
-        Rigidbody clone;
-        clone = Instantiate(projectile, transform.position, transform.rotation);
-        clone.velocity = transform.TransformDirection(Vector3.forward * 10);
+        GameObject instProjectile = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+        Rigidbody instProjectileRigidbody = instProjectile.GetComponent<Rigidbody>();
+        instProjectileRigidbody.AddForce(Vector3.forward * 10);
     }
 }
