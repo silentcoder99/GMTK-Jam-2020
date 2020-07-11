@@ -6,18 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float dashForce = 1000f;
-    public float jumpForce = 500f;
-    public float speed = 40f;
-    public float airSpeed = 10f;
-    public float dragFactor = 0.1f;
+    private float dashForce = 1000f;
+    private float jumpForce = 500f;
+    private float speed = 10f;
+    private float airSpeed = 10f;
+    private float dragFactor = 0.1f;
 
-    public float movingFriction = 0f;
-    public float stoppingFriction = 2f;
+    private float movingFriction = 0f;
+    private float stoppingFriction = 2f;
 
-    public int jumpCount = 1;
-    public int dashCount = 0;
-    public int attackCount = 0;
+    private int jumpCount = 1;
+    private int dashCount = 0;
+    private int attackCount = 0;
 
     private Rigidbody body;
     private GameObject jumpCounterObj;
