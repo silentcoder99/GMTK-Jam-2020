@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     private float jumpForce = 500f;
     private float speed = 10f;
     private float airSpeed = 10f;
-    private float dragFactor = 0.1f;
+    private float horizontalDrag = 0.1f;
+    private float verticalDrag = 0.05f;
 
     private float movingFriction = 0f;
     private float stoppingFriction = 2f;
@@ -88,13 +89,17 @@ public class Player : MonoBehaviour
             setFriction(stoppingFriction);
         }
 
-        //Apply horizontal drag
+        //Apply horizontal and vertical drag
         Vector3 drag = Vector3.zero;
-        drag.x = Mathf.Pow(body.velocity.x, 2);
+        drag.x = Mathf.Pow(body.velocity.x, 2) * horizontalDrag;
+        drag.y = Mathf.Pow(body.velocity.y, 2) * verticalDrag;
         if(body.velocity.x > 0) {
             drag.x *= -1;
         }
-        body.AddForce(drag * dragFactor);
+        if(body.velocity.y > 0) {
+            drag.y *= -1;
+        }
+        body.AddForce(drag);
 
         if(onFloor) {
             body.AddForce(movement * speed);
