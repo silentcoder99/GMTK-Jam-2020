@@ -61,8 +61,11 @@ public class Player : MonoBehaviour
             dashCount --;
         }
 
-        if (Input.GetButtonDown("Fire1") && (attackCount > 0)){
-            spawnProjectile();
+        if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (movement.x > 0)){
+            spawnProjectile(true);
+        }
+        else if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (movement.x < 0)){
+            spawnProjectile(false);
         }
 
         jumpCounter.text = jumpCount.ToString();
@@ -142,28 +145,27 @@ public class Player : MonoBehaviour
                 kill();
                 break;
         }
-
-        if(objectName == "floor") {
-            onFloor = true;
-
-            Debug.Log("Hit floor");
-        } 
     }
 
     void OnCollisionExit(Collision other) {
         if(other.gameObject.tag == "floor") {
             onFloor = false;
 
-            Debug.Log("In air");
         }
     }
 
-    private void spawnProjectile(){
+    private void spawnProjectile(bool facingRight){
             Rigidbody clone, negclone;
-            clone = Instantiate(projectile, transform.position, transform.rotation);
-            negclone = Instantiate(projectile, (transform.position - new Vector3(1, 0, 0)), transform.rotation);
-            clone.velocity = transform.TransformDirection(Vector3.back * 10);
-            negclone.velocity = transform.TransformDirection(Vector3.forward * -10);
+            if (facingRight){
+                clone = Instantiate(projectile, (transform.position + new Vector3(1, 0, 0)), transform.rotation);
+                clone.velocity = Vector3.right * 15;
+            }else{
+                negclone = Instantiate(projectile, (transform.position - new Vector3(1, 0, 0)), transform.rotation);
+                negclone.transform.Rotate(0, 180, 0);
+                negclone.velocity = -Vector3.right * 15;
+            }
+            
+
     }
 
     private void kill(){
