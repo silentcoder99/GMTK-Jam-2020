@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             dashCount --;
         }
 
-        if (Input.GetButtonDown("Attack") && (attackCount > 0)){
+        if (Input.GetButtonDown("Fire1") && (attackCount > 0)){
             spawnProjectile();
         }
 
