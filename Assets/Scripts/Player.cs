@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
 
     public float dashForce = 1.0f;
-    public float jumpForce = 1.0f;
+    public float jumpForce = 20.0f;
     public float speed = 1.0f;
 
     private Rigidbody body;
@@ -25,8 +25,19 @@ public class Player : MonoBehaviour
 
         body.AddForce(movement * speed);
 
+        jump();
+
         if(Input.GetButtonDown("Dash")) {
             body.AddForce(movement * dashForce);
+        }
+    }
+
+    void jump(){
+        Vector3 jumpVector = Vector3.zero;
+
+        if (Input.GetButtonDown("Jump")){
+            jumpVector.y = 1;
+            body.AddForce(transform.up * jumpForce);
         }
     }
 }
