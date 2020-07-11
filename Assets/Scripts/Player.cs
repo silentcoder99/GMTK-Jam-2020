@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float dashForce = 500f;
-    public float jumpForce = 500f;
-    public float speed = 10f;
-    public float airSpeed = 10f;
+    private float dashForce = 500f;
+    private float jumpForce = 500f;
+    private float speed = 10f;
+    private float airSpeed = 10f;
 
     public float movingFriction = 0.8f;
     public float stoppingFriction = 1000f;
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
                 Destroy(objectEncountered);
                 break;
             case "Finish":
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                nextLevel();
                 break;
         }
     }
@@ -180,6 +180,7 @@ public class Player : MonoBehaviour
     }
 
     private void nextLevel(){
-        
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextScene);
     }
 }
