@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private Rigidbody body;
     private GameObject jumpCounterObj;
     private Text jumpCounter;
+    private GameObject dashCounterObj;
+    private Text dashCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,9 @@ public class Player : MonoBehaviour
 
         jumpCounterObj = GameObject.Find("jumpCounter");
         jumpCounter = jumpCounterObj.GetComponent<Text>();
+
+        dashCounterObj = GameObject.Find("dashCounter");
+        dashCounter = dashCounterObj.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -38,9 +43,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Dash") && (dashCount > 0)){
             body.AddForce(movement * dashForce);
+            dashCount --;
         }
 
         jumpCounter.text = jumpCount.ToString();
+        dashCounter.text = dashCount.ToString();
 
     }
 
