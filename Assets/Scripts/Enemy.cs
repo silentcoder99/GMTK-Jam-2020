@@ -28,5 +28,11 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag != "floor") {
             direction = -direction;
         }
+
+        if(collision.gameObject.tag == "Player") {
+            Application.LoadLevel(Application.loadedLevel);
+
+            Debug.Log("Player!");
+        }
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 833869273171554276}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,9 @@ MonoBehaviour:
   dashForce: 1
   jumpForce: 1
   speed: 10
+  jumpCount: 1
+  dashCount: 0
+  attackCount: 0
 --- !u!1 &833869273228089953
 GameObject:
   m_ObjectHideFlags: 0
