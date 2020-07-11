@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -87,7 +88,7 @@ public class Player : MonoBehaviour
                 attackCount ++;
                 break;
             case "enemy":
-                
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }
 
@@ -96,10 +97,5 @@ public class Player : MonoBehaviour
 
     private void spawnProjectile(){
 
-    }
-
-    private void die(){
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
