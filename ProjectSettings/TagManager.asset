@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - goal
   - floor
+  - projectile
   layers:
   - Default
   - TransparentFX

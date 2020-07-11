@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private GameObject attackCounterObj;
     private Text attackCounter;
 
-    private Rigidbody projectile;
+    public Rigidbody projectile;
 
     private Vector3 movement;
     private bool onFloor;
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         dashCounter = dashCounterObj.GetComponent<Text>();
 
         attackCounterObj = GameObject.Find("attackCounter");
-        attackCounter = dashCounterObj.GetComponent<Text>();
+        attackCounter = attackCounterObj.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -67,6 +67,11 @@ public class Player : MonoBehaviour
 
         jumpCounter.text = jumpCount.ToString();
         dashCounter.text = dashCount.ToString();
+        attackCounter.text = attackCount.ToString();
+
+        if (transform.position.y < -100){
+            kill();
+        }
 
     }
 
@@ -104,29 +109,39 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        GameObject powerUp = other.gameObject;
+        GameObject objectEncountered = other.gameObject;
 
-        string pickupName = other.gameObject.tag.ToString();
+        string objectName = other.gameObject.tag.ToString();
 
-        switch(pickupName){
+        switch(objectName){
             case "jump":
                 jumpCount ++;
+                Destroy(objectEncountered);
                 break;
             case "dash":
                 dashCount ++;
+                Destroy(objectEncountered);
                 break;
             case "attack":
                 attackCount ++;
-                break;
-            case "enemy":
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Destroy(objectEncountered);
                 break;
             case "Finish":
-                Application.LoadLevel(Application.loadedLevel);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }
+    }
 
-        Destroy(powerUp);
+    private void OnCollisionEnter(Collision other){
+        GameObject objectEncountered = other.gameObject;
+
+        string objectName = other.gameObject.tag.ToString();
+
+        switch(objectName){
+            case "enemy":
+                kill();
+                break;
+        }
     }
 
     void OnCollisionEnter(Collision other) {
@@ -146,8 +161,12 @@ public class Player : MonoBehaviour
     }
 
     private void spawnProjectile(){
-        Rigidbody clone;
-        clone = Instantiate(projectile, transform.position, transform.rotation);
-        clone.velocity = transform.TransformDirection(Vector3.forward * 10);
+            Rigidbody clone;
+            clone = Instantiate(projectile, transform.position, transform.rotation);
+            clone.velocity = transform.TransformDirection(Vector3.forward * 10);
+    }
+
+    private void kill(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
