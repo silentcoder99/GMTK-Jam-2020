@@ -9,9 +9,7 @@ public class Enemy : MonoBehaviour
 
     private Vector3 direction;
     private Rigidbody body;
-
-    private bool turning = false;
-
+    
     // Start is called before the first frame update
     void Start()
     {

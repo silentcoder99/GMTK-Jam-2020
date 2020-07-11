@@ -2196,7 +2196,7 @@ PrefabInstance:
     - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
       propertyPath: speed
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
@@ -2209,10 +2209,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5572098147969526129, guid: 8c8d71606a6796b469966d558fb7a197,
         type: 3}
+    - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: movingFriction
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: stoppingFriction
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 833869273171554277, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
       propertyPath: m_Drag
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 833869273171554277, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
