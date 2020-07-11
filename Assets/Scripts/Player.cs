@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
     public float dashForce = 1f;
     public float jumpForce = 500f;
     public float speed = 5f;
@@ -14,11 +14,16 @@ public class Player : MonoBehaviour
     public int attackCount = 0;
 
     private Rigidbody body;
+    private GameObject jumpCounterObj;
+    private Text jumpCounter;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>();
+
+        jumpCounterObj = GameObject.Find("jumpCounter");
+        jumpCounter = jumpCounterObj.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -34,6 +39,9 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Dash") && (dashCount > 0)){
             body.AddForce(movement * dashForce);
         }
+
+        jumpCounter.text = jumpCount.ToString();
+
     }
 
     void jump(){

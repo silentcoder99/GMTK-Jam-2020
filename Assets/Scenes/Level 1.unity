@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 633743382}
   - component: {fileID: 633743381}
   m_Layer: 5
-  m_Name: JumpCount
+  m_Name: jumpCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 1546372978}
   - component: {fileID: 1546372977}
   m_Layer: 5
-  m_Name: DashCount
+  m_Name: dashCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
