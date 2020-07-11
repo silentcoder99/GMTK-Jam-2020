@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
             dashCount --;
         }
 
+        if (Input.GetButtonDown("Fire1") && (attackCount > 0)){
+            spawnProjectile();
+        }
+
         jumpCounter.text = jumpCount.ToString();
         dashCounter.text = dashCount.ToString();
 
@@ -76,5 +80,9 @@ public class Player : MonoBehaviour
         }
 
         Destroy(powerUp);
+    }
+
+    private void spawnProjectile(){
+
     }
 }
