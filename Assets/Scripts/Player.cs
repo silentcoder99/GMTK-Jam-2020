@@ -70,6 +70,11 @@ public class Player : MonoBehaviour
             spawnProjectile(false);
         }
 
+        if(Input.GetButtonDown("Reset")) {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+
         jumpCounter.text = jumpCount.ToString();
         dashCounter.text = dashCount.ToString();
         attackCounter.text = attackCount.ToString();
