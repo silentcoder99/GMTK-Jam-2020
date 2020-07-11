@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     private GameObject attackCounterObj;
     private Text attackCounter;
 
+    private Rigidbody projectile;
+
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +101,8 @@ public class Player : MonoBehaviour
     }
 
     private void spawnProjectile(){
-
+        Rigidbody clone;
+        clone = Instantiate(projectile, transform.position, transform.rotation);
+        clone.velocity = transform.TransformDirection(Vector3.forward * 10);
     }
 }

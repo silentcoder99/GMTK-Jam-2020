@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 10.0f;
+    public int hp = 1;
 
     private Vector3 direction;
     private Rigidbody body;
@@ -22,6 +23,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         body.transform.position += direction * speed;
+        if (hp <= 0){
+            Destroy(this);
+        }
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -29,10 +33,8 @@ public class Enemy : MonoBehaviour
             direction = -direction;
         }
 
-        if(collision.gameObject.tag == "Player") {
-            Application.LoadLevel(Application.loadedLevel);
-
-            Debug.Log("Player!");
+        if(collision.gameObject.tag == "projectile") {
+            hp --;
         }
     }
 }
