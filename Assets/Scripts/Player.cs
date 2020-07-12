@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    //physics variables
     private float dashForce = 1000f;
     private float jumpForce = 500f;
     private float speed = 10f;
@@ -16,11 +17,21 @@ public class Player : MonoBehaviour
     private float movingFriction = 0f;
     private float stoppingFriction = 2f;
 
+    //number of jumps, dashes, attacks.
     private int jumpCount = 1;
     private int dashCount = 1;
     private int attackCount = 1;
+    
+    
+    //checpoint variables
+    private int checkpointJump;
+    private int checkpointDash;
+    private int checkpointAttack;
+    private float checkpointX;
+    private float checkpointY;
+    private bool checkpointReached;
 
-    private Rigidbody body;
+    //UI variables
     private GameObject jumpCounterObj;
     private Text jumpCounter;
     private GameObject dashCounterObj;
@@ -29,21 +40,27 @@ public class Player : MonoBehaviour
     private Text attackCounter;
     private GameObject cameraObj;
 
+    //ridigbody and movement variables
+    private Rigidbody body;
     public Rigidbody projectile;
 
     private Vector3 movement;
     private bool onFloor;
     private bool facingRight = true;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        checkpointReached = false;
+
         body = GetComponent<Rigidbody>();
         setFriction(stoppingFriction);
         body.drag = 1f;
         body.freezeRotation = true;
         movement = Vector3.zero;
 
+        //create UI
         jumpCounterObj = GameObject.Find("jumpCounter");
         jumpCounter = jumpCounterObj.GetComponent<Text>();
 
@@ -53,10 +70,11 @@ public class Player : MonoBehaviour
         attackCounterObj = GameObject.Find("attackCounter");
         attackCounter = attackCounterObj.GetComponent<Text>();
 
+        //define camera
         cameraObj = GameObject.Find("Main Camera");
-
+        
+        //starting number of abillities per scene
         string sceneName = SceneManager.GetActiveScene().name;
-
         switch(sceneName){
             case "Level 0":
                 jumpCount = 0;
@@ -136,19 +154,13 @@ public class Player : MonoBehaviour
             spawnProjectile(false);
         }
 
-        if(Input.GetButtonDown("Reset")) {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
-
         jumpCounter.text = jumpCount.ToString();
         dashCounter.text = dashCount.ToString();
         attackCounter.text = attackCount.ToString();
 
-        if (transform.position.y < -20){
+        if ((transform.position.y < -20) || (Input.GetButtonDown("Reset"))){
             kill();
         }
-
     }
 
     void FixedUpdate() {
@@ -204,20 +216,21 @@ public class Player : MonoBehaviour
         switch(objectName){
             case "jump":
                 jumpCount ++;
-                Destroy(objectEncountered);
                 break;
             case "dash":
                 dashCount ++;
-                Destroy(objectEncountered);
                 break;
             case "attack":
                 attackCount ++;
-                Destroy(objectEncountered);
+                break;
+            case "checkpoint":
+                checkpointTouched();
                 break;
             case "Finish":
                 nextLevel();
                 break;
         }
+        Destroy(objectEncountered);
     }
 
     void OnCollisionEnter(Collision other){
@@ -269,7 +282,29 @@ public class Player : MonoBehaviour
     }
 
     private void kill(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (!checkpointReached){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }else{
+            returnToCheckpoint(checkpointX, checkpointY);
+        }
+        
+    }
+
+    private void checkpointTouched(){
+        checkpointReached = true;
+        checkpointX = this.gameObject.transform.position.x;
+        checkpointY = this.gameObject.transform.position.y;  
+
+        checkpointJump = jumpCount;
+        checkpointDash = dashCount;
+        checkpointAttack = attackCount;
+    }
+
+    private void returnToCheckpoint(float xx, float yy){
+        jumpCount = checkpointJump;
+        dashCount = checkpointDash;
+        attackCount = checkpointAttack;
+        transform.position = new Vector3(xx, yy, 0);
     }
 
     private void nextLevel(){
