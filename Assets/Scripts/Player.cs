@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     private float stoppingFriction = 2f;
 
     private int jumpCount = 1;
-    private int dashCount = 0;
-    private int attackCount = 0;
+    private int dashCount = 1;
+    private int attackCount = 1;
 
     private Rigidbody body;
     private GameObject jumpCounterObj;
@@ -61,6 +61,12 @@ public class Player : MonoBehaviour
                 attackCount = 0;
                 break;
 
+            case "Level 0.5":
+                jumpCount = 0;
+                dashCount = 0;
+                attackCount = 0;
+                break;
+
             case "Level 1":
                 jumpCount = 4;
                 dashCount = 4;
@@ -72,7 +78,13 @@ public class Player : MonoBehaviour
                 dashCount = 1;
                 attackCount = 0;
                 break;
-            
+
+            case "Level 3":
+                jumpCount = 0;
+                dashCount = 0;
+                attackCount = 0;
+                break;
+
             default:
                 jumpCount = 1;
                 dashCount = 1;
