@@ -302,8 +302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -469.57, y: -189.39}
-  m_SizeDelta: {x: 17.638403, y: 1.1786776}
+  m_AnchoredPosition: {x: -468.665, y: -189.39}
+  m_SizeDelta: {x: 19.447603, y: 1.1786776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219011078
 MonoBehaviour:
@@ -337,7 +337,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Space to Jump (X on a ps4 controller)
+  m_Text: Space to Jump (A on an Xbone controller)
 --- !u!222 &219011079
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1094,8 +1094,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -469.25, y: -191.04}
-  m_SizeDelta: {x: 18.27152, y: 1.1786776}
+  m_AnchoredPosition: {x: -468.429, y: -191.04}
+  m_SizeDelta: {x: 19.914309, y: 1.1786776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &706330121
 MonoBehaviour:
@@ -1129,7 +1129,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: r to Restart (Options on a ps4 controller)
+  m_Text: r to Restart (Menu on an Xbone controller)
 --- !u!222 &706330122
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1464,7 +1464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Shift to Dash (Sqaure on a ps4 controller)
+  m_Text: Shift to Dash (X on an Xbone controller)
 --- !u!222 &883368208
 CanvasRenderer:
   m_ObjectHideFlags: 0

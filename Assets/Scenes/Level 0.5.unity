@@ -403,7 +403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press e to Shoot (Circle on ps4 controller)
+  m_Text: Press e to Shoot (B on Xbone controller)
 --- !u!222 &610962968
 CanvasRenderer:
   m_ObjectHideFlags: 0
