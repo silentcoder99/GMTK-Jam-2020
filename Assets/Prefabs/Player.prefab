@@ -127,7 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32502d659cb12bc4186c3bbd194f0a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 5572098147969526129, guid: 8c8d71606a6796b469966d558fb7a197,
+    type: 3}
+  jumpClip: {fileID: 8300000, guid: eb7d12db2f9c7914fa1d44e02bfc6568, type: 3}
+  dashClip: {fileID: 8300000, guid: ec8e310dbdf14c048ac97c12e43bb5bd, type: 3}
+  shootClip: {fileID: 8300000, guid: 3bfceb10e768f6940a5bcb32f83260fd, type: 3}
 --- !u!1 &833869273228089953
 GameObject:
   m_ObjectHideFlags: 0

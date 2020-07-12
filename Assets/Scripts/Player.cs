@@ -30,10 +30,27 @@ public class Player : MonoBehaviour
     private GameObject cameraObj;
 
     public Rigidbody projectile;
+    public AudioClip jumpClip;
+    public AudioClip dashClip;
+    public AudioClip shootClip;
+
+    private AudioSource jumpSource;
+    private AudioSource dashSource;
+    private AudioSource shootSource;
 
     private Vector3 movement;
     private bool onFloor;
     private bool facingRight = true;
+
+    void Awake() {
+        jumpSource = gameObject.AddComponent<AudioSource>();
+        dashSource = gameObject.AddComponent<AudioSource>();
+        shootSource = gameObject.AddComponent<AudioSource>();
+
+        jumpSource.clip = jumpClip;
+        dashSource.clip = dashClip;
+        shootSource.clip = shootClip;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -193,6 +210,8 @@ public class Player : MonoBehaviour
             jumpVector.y = 1;
             body.AddForce(transform.up * jumpForce);
             jumpCount --;
+
+            jumpSource.Play();
         }
     }
 
@@ -253,6 +272,8 @@ public class Player : MonoBehaviour
             body.AddForce(Vector3.left * dashForce);
         }
         dashCount --;
+
+        dashSource.Play();
     }
 
     private void spawnProjectile(bool facingRight){
@@ -266,6 +287,8 @@ public class Player : MonoBehaviour
                 negclone.velocity = -Vector3.right * 15;
             }
         attackCount --;   
+
+        shootSource.Play();
     }
 
     private void kill(){
