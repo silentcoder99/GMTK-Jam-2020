@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         setFriction(stoppingFriction);
+        body.drag = 1f;
+        body.freezeRotation = true;
         movement = Vector3.zero;
 
         jumpCounterObj = GameObject.Find("jumpCounter");
@@ -49,6 +51,16 @@ public class Player : MonoBehaviour
 
         attackCounterObj = GameObject.Find("attackCounter");
         attackCounter = attackCounterObj.GetComponent<Text>();
+
+        if (SceneManager.GetActiveScene().name == "Level 1"){
+            jumpCount = 4;
+            dashCount = 4;
+            attackCount = 4;
+        }else{
+            jumpCount = 1;
+            dashCount = 1;
+            attackCount = 1;
+        }
     }
 
     // Update is called once per frame
@@ -190,7 +202,7 @@ public class Player : MonoBehaviour
                 negclone.transform.Rotate(0, 180, 0);
                 negclone.velocity = -Vector3.right * 15;
             }
-            
+        attackCount --;    
 
     }
 
