@@ -88,6 +88,12 @@ public class Player : MonoBehaviour
                 attackCount = 0;
                 break;
 
+            case "Ending":
+                jumpCount = 99;
+                dashCount = 99;
+                attackCount = 99;
+                break;
+
             default:
                 jumpCount = 1;
                 dashCount = 1;
