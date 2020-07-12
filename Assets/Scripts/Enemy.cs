@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
 
         if(collision.gameObject.tag == "projectile") {
             hp --;
+            Destroy(collision.gameObject);
         }
     }
 }
