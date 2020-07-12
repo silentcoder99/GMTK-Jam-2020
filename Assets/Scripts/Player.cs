@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     private GameObject attackCounterObj;
     private Text attackCounter;
     private GameObject cameraObj;
+    
+    private Text emptyText;
+    private float emptyTextTimer = 0f;
 
     //ridigbody and sound variables
     private Rigidbody body;
@@ -80,6 +83,9 @@ public class Player : MonoBehaviour
 
         attackCounterObj = GameObject.Find("attackCounter");
         attackCounter = attackCounterObj.GetComponent<Text>();
+
+        emptyText = GameObject.Find("EmptyMessage").GetComponent<Text>();
+        emptyText.enabled = false;
 
         //define camera
         cameraObj = GameObject.Find("Main Camera");
@@ -140,18 +146,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        if(emptyTextTimer >= 0) {
+            emptyTextTimer -= Time.deltaTime;
+        }
+
+        if(emptyTextTimer < 0) {
+            emptyText.enabled = false;
+        }
+
         movement.x = Input.GetAxis("Horizontal");
         if (movement.x > 0 && !facingRight) {
             facingRight = true;
 
             transform.eulerAngles = new Vector3(0, 0, 0);
             cameraObj.transform.RotateAround(transform.position, Vector3.up, 180);
+            emptyText.gameObject.transform.RotateAround(transform.position, Vector3.up, 180);
         }
         else if (movement.x < 0 && facingRight) {
             facingRight = false;
 
             transform.eulerAngles = new Vector3(0, 180, 0);
             cameraObj.transform.RotateAround(transform.position, Vector3.up, 180);
+            emptyText.gameObject.transform.RotateAround(transform.position, Vector3.up, 180);
         }
 
         jump();
@@ -162,6 +178,7 @@ public class Player : MonoBehaviour
             }
             else {
                 emptySource.Play();
+                showEmptyMessage("No Dashes");
             }
         }
 
@@ -171,6 +188,7 @@ public class Player : MonoBehaviour
             }
             else {
                 emptySource.Play();
+                showEmptyMessage("No Fires");
             }
         }
 
@@ -212,6 +230,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    void showEmptyMessage(string message) {
+        emptyText.text = message;
+        emptyText.enabled = true;
+        emptyTextTimer = 0.5f;
+    }
+
     void setFriction(float friction) {
         Collider collider = GetComponent<Collider>();
         collider.material.dynamicFriction = friction;
@@ -231,6 +255,7 @@ public class Player : MonoBehaviour
             }
             else {
                 emptySource.Play();
+                showEmptyMessage("No Jumps");
             }
         }
     }
