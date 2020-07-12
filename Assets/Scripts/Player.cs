@@ -55,6 +55,12 @@ public class Player : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
 
         switch(sceneName){
+            case "Level 0":
+                jumpCount = 0;
+                dashCount = 0;
+                attackCount = 0;
+                break;
+
             case "Level 1":
                 jumpCount = 4;
                 dashCount = 4;
@@ -65,6 +71,12 @@ public class Player : MonoBehaviour
                 jumpCount = 1;
                 dashCount = 1;
                 attackCount = 0;
+                break;
+            
+            default:
+                jumpCount = 1;
+                dashCount = 1;
+                attackCount = 1;
                 break;
         }
     }
