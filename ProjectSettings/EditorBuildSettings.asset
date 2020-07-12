@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 73f453b0fc94f764bba580accc41577e
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 1d40259576eb85846843fc48a451901e
   - enabled: 1
+    path: Assets/Scenes/LongJump.unity
+    guid: 712263a4382e7f246ace16dd54b39c72
+  - enabled: 1
     path: Assets/Scenes/Level 2.unity
     guid: 47e9e731fe17a8a42a5c13925a19005f
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 73f453b0fc94f764bba580accc41577e
   m_configObjects: {}
