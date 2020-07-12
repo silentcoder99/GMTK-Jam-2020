@@ -68,9 +68,9 @@ public class Player : MonoBehaviour
                 break;
 
             case "Level 1":
-                jumpCount = 4;
-                dashCount = 4;
-                attackCount = 4;
+                jumpCount = 3;
+                dashCount = 3;
+                attackCount = 3;
                 break;
 
             case "Level 2":
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
         dashCounter.text = dashCount.ToString();
         attackCounter.text = attackCount.ToString();
 
-        if (transform.position.y < -30){
+        if (transform.position.y < -20){
             kill();
         }
 
