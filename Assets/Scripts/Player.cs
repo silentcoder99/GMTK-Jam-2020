@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    //public checkpointStats cs = new checkpointStats;
-
     //physics variables
     private float dashForce = 1000f;
     private float jumpForce = 500f;
@@ -23,15 +21,6 @@ public class Player : MonoBehaviour
     private int jumpCount = 1;
     private int dashCount = 1;
     private int attackCount = 1;
-    
-    
-    //checpoint variables
-    //private int checkpointJump;
-    //private int checkpointDash;
-    //private int checkpointAttack;
-    //private float checkpointX;
-    //private float checkpointY;
-    //private bool checkpointReached;
 
     //UI variables
     private GameObject jumpCounterObj;
@@ -42,7 +31,7 @@ public class Player : MonoBehaviour
     private Text attackCounter;
     private GameObject cameraObj;
 
-    //ridigbody and movement variables
+    //ridigbody and sound variables
     private Rigidbody body;
     public Rigidbody projectile;
     public AudioClip jumpClip;
@@ -311,12 +300,7 @@ public class Player : MonoBehaviour
     }
 
     private void kill(){
-        //if (!checkpointReached){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //}//else{
-            //returnToCheckpoint(checkpointX, checkpointY);
-        //}
-        
     }
 
     private void checkpointTouched(){
@@ -330,7 +314,6 @@ public class Player : MonoBehaviour
     }
 
     private void returnToCheckpoint(float xx, float yy){
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         jumpCount = checkpointStats.checkpointJump;
         dashCount = checkpointStats.checkpointDash;
         attackCount = checkpointStats.checkpointAttack;
