@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     private float stoppingFriction = 2f;
 
     private int jumpCount = 1;
-    private int dashCount = 0;
-    private int attackCount = 0;
+    private int dashCount = 1;
+    private int attackCount = 1;
 
     private Rigidbody body;
     private GameObject jumpCounterObj;
@@ -55,6 +55,12 @@ public class Player : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
 
         switch(sceneName){
+            case "Level 0":
+                jumpCount = 0;
+                dashCount = 0;
+                attackCount = 0;
+                break;
+
             case "Level 1":
                 jumpCount = 4;
                 dashCount = 4;
@@ -65,6 +71,24 @@ public class Player : MonoBehaviour
                 jumpCount = 1;
                 dashCount = 1;
                 attackCount = 0;
+                break;
+
+            case "LongJump":
+                jumpCount = 0;
+                dashCount = 0;
+                attackCount = 0;
+                break;
+
+            case "Shootout":
+                jumpCount = 0;
+                dashCount = 0;
+                attackCount = 0;
+                break;
+
+            default:
+                jumpCount = 1;
+                dashCount = 1;
+                attackCount = 1;
                 break;
         }
     }
