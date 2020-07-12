@@ -132,6 +132,7 @@ MonoBehaviour:
   jumpClip: {fileID: 8300000, guid: eb7d12db2f9c7914fa1d44e02bfc6568, type: 3}
   dashClip: {fileID: 8300000, guid: ec8e310dbdf14c048ac97c12e43bb5bd, type: 3}
   shootClip: {fileID: 8300000, guid: 3bfceb10e768f6940a5bcb32f83260fd, type: 3}
+  emptyClip: {fileID: 8300000, guid: 319cc24383ea8ee4ba0d5886535c0b57, type: 3}
 --- !u!1 &833869273228089953
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,10 +48,12 @@ public class Player : MonoBehaviour
     public AudioClip jumpClip;
     public AudioClip dashClip;
     public AudioClip shootClip;
+    public AudioClip emptyClip;
 
     private AudioSource jumpSource;
     private AudioSource dashSource;
     private AudioSource shootSource;
+    private AudioSource emptySource;
 
     private Vector3 movement;
     private bool onFloor;
@@ -62,10 +64,13 @@ public class Player : MonoBehaviour
         jumpSource = gameObject.AddComponent<AudioSource>();
         dashSource = gameObject.AddComponent<AudioSource>();
         shootSource = gameObject.AddComponent<AudioSource>();
+        emptySource = gameObject.AddComponent<AudioSource>();
 
         jumpSource.clip = jumpClip;
         dashSource.clip = dashClip;
         shootSource.clip = shootClip;
+        emptySource.clip = emptyClip;
+        emptySource.volume = 0.35f;
     }
 
     // Start is called before the first frame update
@@ -162,19 +167,22 @@ public class Player : MonoBehaviour
 
         jump();
 
-        if (Input.GetButtonDown("Dash") && (dashCount > 0) && (facingRight)){
-            dash(true);
+        if (Input.GetButtonDown("Dash")) {
+            if(dashCount > 0) {
+                dash(facingRight);
+            }
+            else {
+                emptySource.Play();
+            }
         }
 
-        else if (Input.GetButtonDown("Dash") && (dashCount > 0) && (!facingRight)){
-            dash(false);
-        }
-
-        if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (facingRight)){
-            spawnProjectile(true);
-        }
-        else if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (!facingRight)){
-            spawnProjectile(false);
+        if (Input.GetButtonDown("Fire1")) {
+            if(attackCount > 0) {
+                spawnProjectile(facingRight);
+            }
+            else {
+                emptySource.Play();
+            }
         }
 
         jumpCounter.text = jumpCount.ToString();
@@ -224,12 +232,17 @@ public class Player : MonoBehaviour
     void jump(){
         Vector3 jumpVector = Vector3.zero;
 
-        if (Input.GetButtonDown("Jump") && (jumpCount > 0)){
-            jumpVector.y = 1;
-            body.AddForce(transform.up * jumpForce);
-            jumpCount --;
+        if (Input.GetButtonDown("Jump")) {
+            if(jumpCount > 0) {
+                jumpVector.y = 1;
+                body.AddForce(transform.up * jumpForce);
+                jumpCount --;
 
-            jumpSource.Play();
+                jumpSource.Play();
+            }
+            else {
+                emptySource.Play();
+            }
         }
     }
 
