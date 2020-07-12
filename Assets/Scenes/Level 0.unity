@@ -1872,6 +1872,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 220542044}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1802476946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 833869273228089953, guid: 8314499f8313a2f46843098ba0813461,
+    type: 3}
+  m_PrefabInstance: {fileID: 833869273342850832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1805588068 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8970800861414538356, guid: d44eb895a862145488a63ecae8a9f86c,
@@ -2294,6 +2300,16 @@ PrefabInstance:
       propertyPath: dragFactor
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1802476946}
+    - target: {fileID: 833869273171554276, guid: 8314499f8313a2f46843098ba0813461,
+        type: 3}
+      propertyPath: cameraObj
+      value: 
+      objectReference: {fileID: 1802476946}
     - target: {fileID: 833869273171554277, guid: 8314499f8313a2f46843098ba0813461,
         type: 3}
       propertyPath: m_Drag

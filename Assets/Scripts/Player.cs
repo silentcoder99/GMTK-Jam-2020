@@ -27,12 +27,13 @@ public class Player : MonoBehaviour
     private Text dashCounter;
     private GameObject attackCounterObj;
     private Text attackCounter;
+    private GameObject cameraObj;
 
     public Rigidbody projectile;
 
     private Vector3 movement;
     private bool onFloor;
-
+    private bool facingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,8 @@ public class Player : MonoBehaviour
 
         attackCounterObj = GameObject.Find("attackCounter");
         attackCounter = attackCounterObj.GetComponent<Text>();
+
+        cameraObj = GameObject.Find("Main Camera");
 
         string sceneName = SceneManager.GetActiveScene().name;
 
@@ -97,6 +100,18 @@ public class Player : MonoBehaviour
     void Update()
     {   
         movement.x = Input.GetAxis("Horizontal");
+        if (movement.x > 0 && !facingRight) {
+            facingRight = true;
+
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            cameraObj.transform.RotateAround(transform.position, Vector3.up, 180);
+        }
+        else if (movement.x < 0 && facingRight) {
+            facingRight = false;
+
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            cameraObj.transform.RotateAround(transform.position, Vector3.up, 180);
+        }
 
         jump();
 
