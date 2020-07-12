@@ -115,15 +115,18 @@ public class Player : MonoBehaviour
 
         jump();
 
-        if (Input.GetButtonDown("Dash") && (dashCount > 0) && movement.x != 0){
-            body.AddForce(movement * dashForce);
-            dashCount --;
+        if (Input.GetButtonDown("Dash") && (dashCount > 0) && (facingRight)){
+            dash(true);
         }
 
-        if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (movement.x > 0)){
+        else if (Input.GetButtonDown("Dash") && (dashCount > 0) && (!facingRight)){
+            dash(false);
+        }
+
+        if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (facingRight)){
             spawnProjectile(true);
         }
-        else if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (movement.x < 0)){
+        else if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (!facingRight)){
             spawnProjectile(false);
         }
 
@@ -237,6 +240,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void dash(bool facingRight){
+        if (facingRight){
+            body.AddForce(Vector3.right * dashForce);
+        }else{
+            body.AddForce(Vector3.left * dashForce);
+        }
+        dashCount --;
+    }
+
     private void spawnProjectile(bool facingRight){
             Rigidbody clone, negclone;
             if (facingRight){
@@ -247,8 +259,7 @@ public class Player : MonoBehaviour
                 negclone.transform.Rotate(0, 180, 0);
                 negclone.velocity = -Vector3.right * 15;
             }
-        attackCount --;    
-
+        attackCount --;   
     }
 
     private void kill(){
