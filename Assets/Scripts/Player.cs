@@ -61,6 +61,12 @@ public class Player : MonoBehaviour
                 attackCount = 0;
                 break;
 
+            case "Level 0.5":
+                jumpCount = 0;
+                dashCount = 0;
+                attackCount = 0;
+                break;
+
             case "Level 1":
                 jumpCount = 4;
                 dashCount = 4;
@@ -73,13 +79,7 @@ public class Player : MonoBehaviour
                 attackCount = 0;
                 break;
 
-            case "LongJump":
-                jumpCount = 0;
-                dashCount = 0;
-                attackCount = 0;
-                break;
-
-            case "Shootout":
+            case "Level 3":
                 jumpCount = 0;
                 dashCount = 0;
                 attackCount = 0;
