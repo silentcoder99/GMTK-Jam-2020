@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    //public checkpointStats cs = new checkpointStats;
+
     //physics variables
     private float dashForce = 1000f;
     private float jumpForce = 500f;
@@ -24,12 +26,12 @@ public class Player : MonoBehaviour
     
     
     //checpoint variables
-    private int checkpointJump;
-    private int checkpointDash;
-    private int checkpointAttack;
-    private float checkpointX;
-    private float checkpointY;
-    private bool checkpointReached;
+    //private int checkpointJump;
+    //private int checkpointDash;
+    //private int checkpointAttack;
+    //private float checkpointX;
+    //private float checkpointY;
+    //private bool checkpointReached;
 
     //UI variables
     private GameObject jumpCounterObj;
@@ -69,8 +71,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkpointReached = false;
-
         body = GetComponent<Rigidbody>();
         setFriction(stoppingFriction);
         body.drag = 1f;
@@ -135,6 +135,12 @@ public class Player : MonoBehaviour
                 attackCount = 1;
                 break;
         }
+
+        if (checkpointStats.checkpointReached){
+            returnToCheckpoint(checkpointStats.checkpointX, checkpointStats.checkpointY);
+        }
+
+        checkpointStats.checkpointReached = false;
     }
 
     // Update is called once per frame
@@ -305,28 +311,29 @@ public class Player : MonoBehaviour
     }
 
     private void kill(){
-        if (!checkpointReached){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }else{
-            returnToCheckpoint(checkpointX, checkpointY);
-        }
+        //if (!checkpointReached){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //}//else{
+            //returnToCheckpoint(checkpointX, checkpointY);
+        //}
         
     }
 
     private void checkpointTouched(){
-        checkpointReached = true;
-        checkpointX = this.gameObject.transform.position.x;
-        checkpointY = this.gameObject.transform.position.y;  
+        checkpointStats.checkpointReached = true;
+        checkpointStats.checkpointX = this.gameObject.transform.position.x;
+        checkpointStats.checkpointY = this.gameObject.transform.position.y;  
 
-        checkpointJump = jumpCount;
-        checkpointDash = dashCount;
-        checkpointAttack = attackCount;
+        checkpointStats.checkpointJump = jumpCount;
+        checkpointStats.checkpointDash = dashCount;
+        checkpointStats.checkpointAttack = attackCount;
     }
 
     private void returnToCheckpoint(float xx, float yy){
-        jumpCount = checkpointJump;
-        dashCount = checkpointDash;
-        attackCount = checkpointAttack;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        jumpCount = checkpointStats.checkpointJump;
+        dashCount = checkpointStats.checkpointDash;
+        attackCount = checkpointStats.checkpointAttack;
         transform.position = new Vector3(xx, yy, 0);
     }
 
