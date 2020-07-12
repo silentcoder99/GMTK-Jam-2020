@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
         dashCounter.text = dashCount.ToString();
         attackCounter.text = attackCount.ToString();
 
-        if (transform.position.y < -100){
+        if (transform.position.y < -30){
             kill();
         }
 
