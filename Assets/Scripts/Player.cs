@@ -120,10 +120,10 @@ public class Player : MonoBehaviour
             dashCount --;
         }
 
-        if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (movement.x > 0)){
+        if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (facingRight)){
             spawnProjectile(true);
         }
-        else if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (movement.x < 0)){
+        else if (Input.GetButtonDown("Fire1") && (attackCount > 0) && (!facingRight)){
             spawnProjectile(false);
         }
 
