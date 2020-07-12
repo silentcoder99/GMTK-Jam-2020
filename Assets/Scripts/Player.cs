@@ -52,14 +52,20 @@ public class Player : MonoBehaviour
         attackCounterObj = GameObject.Find("attackCounter");
         attackCounter = attackCounterObj.GetComponent<Text>();
 
-        if (SceneManager.GetActiveScene().name == "Level 1"){
-            jumpCount = 4;
-            dashCount = 4;
-            attackCount = 4;
-        }else{
-            jumpCount = 1;
-            dashCount = 1;
-            attackCount = 1;
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        switch(sceneName){
+            case "Level 1":
+                jumpCount = 4;
+                dashCount = 4;
+                attackCount = 4;
+                break;
+
+            case "Level 2":
+                jumpCount = 1;
+                dashCount = 1;
+                attackCount = 0;
+                break;
         }
     }
 
